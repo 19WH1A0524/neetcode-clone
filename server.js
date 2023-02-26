@@ -1,12 +1,13 @@
 const express = require("express");
 
 const app = express();
+
+app.use(express.static("frontend"))
+
 app.get("/", function(req, res){
-    res.send("Hello World");
+    res.sendFile(__dirname + "/frontend/index.html");
 })
-app.get("/my-name", function(req, res){
-    res.send("harshini");
-})
+
 app.listen(3000, function(){
     console.log("server running on http://localhost:3000")
 })
