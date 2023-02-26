@@ -5,7 +5,7 @@ module.exports.getAllCourses = async function(){
 }
 
 module.exports.createFirstCourse = async function(){
-    const courses =await courseModel.find({});
+    const courses = await courseModel.find({});
     if (courses && course.length >= 1) {
         const firstCourseInput = {
             "title": "BZ DSA",
@@ -15,4 +15,15 @@ module.exports.createFirstCourse = async function(){
     const course = new courseModel(firstCourseInput);
     await course.save()
 }
+}
+
+module.exports.createCourse = async function(){
+    const course = new courseModel(firstCourseInput);
+    await course.save()
+}
+
+module.exports.updateCourse = async function(courseId, updatedInput){
+    const course = await courseModel.findOneAndUpdate({_id :courseId,updatedInput });
+    await course.save()
+
 }
